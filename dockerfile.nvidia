@@ -1,0 +1,52 @@
+FROM python:3.10-slim-bookworm
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=UTC \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    MODEL_BACKEND=torch \
+    MODEL_DEVICE=cuda:0 \
+    TORCH_HALF=true \
+    DECODER_BACKEND=nvidia_ffmpeg \
+    NVIDIA_VISIBLE_DEVICES=all \
+    NVIDIA_DRIVER_CAPABILITIES=compute,utility,video \
+    STREAM_PORT=8005 \
+    PIP_NO_COMPILE=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ffmpeg \
+      libgl1 \
+      libglib2.0-0 \
+      libsm6 \
+      libxext6 \
+      libxrender1 \
+      libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python -m pip install --upgrade --no-cache-dir --no-compile pip && \
+    python -m pip install --no-cache-dir --no-compile --index-url https://download.pytorch.org/whl/cu128 torch torchvision && \
+    python -m pip install --no-cache-dir --no-compile \
+      numpy \
+      flask \
+      flask-cors \
+      lap \
+      matplotlib \
+      pillow \
+      polars \
+      psutil \
+      pyyaml \
+      requests \
+      scipy \
+      opencv-python-headless \
+      ultralytics-thop && \
+    python -m pip install --no-cache-dir --no-compile --no-deps \
+      deep_sort_realtime \
+      ultralytics
+
+WORKDIR /app
+COPY . /app
+
+EXPOSE 8005
+
+CMD ["python", "main.py"]

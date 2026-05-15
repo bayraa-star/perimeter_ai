@@ -1,0 +1,8 @@
+numpy
+openvino
+flask
+psutil
+flask_cors
+deep_sort_realtime
+torch
+torchvision

@@ -1,0 +1,82 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Virtual environments and local Python installs
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# Packaging/build outputs
+build/
+dist/
+downloads/
+develop-eggs/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and runtime state
+*.log
+logs/
+run/
+tmp/
+temp/
+
+# Runtime-generated captures/media
+entry_media/
+captures/
+recordings/
+*.avi
+*.mp4
+*.mkv
+*.mov
+*.jpg
+*.jpeg
+*.png
+
+# Docker/image export artifacts
+*.tar
+*.tar.gz
+*.tgz
+
+# Large/generated ML model artifacts
+*.pt
+*.pth
+*.onnx
+*.engine
+*.plan
+*.blob
+models/*_openvino_model/
+
+# Editor/OS noise
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

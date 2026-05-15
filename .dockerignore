@@ -1,0 +1,46 @@
+.venv
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.git/
+.gitignore
+.dockerignore
+AGENT.md
+NODE_BACKEND_TASK.md
+PROJECT_CAPABILITIES.md
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info
+.env
+
+# Local/exported Docker image artifacts. This was adding ~4.4GB to COPY . /app.
+*.tar
+*.tar.gz
+*.tgz
+
+# Runtime-generated media should be mounted as a volume, not baked into images.
+entry_media/
+
+# Optional/non-default model artifacts for the NVIDIA torch image.
+# Keep models/yolov8s.pt because TORCH_MODEL_VARIANT defaults to small.
+models/yolov8m.pt
+models/yolov8l.pt
+models/yolov8n_openvino_model/
+models/yolov8s_openvino_model/
+models/20251020_094033/
